@@ -1,22 +1,43 @@
 $(document).ready(function () {
     var words = []; // store puzzle words retrieved from ajax request
-    
+    var puzzleWord; // use to store randomly selected puzzle word 
+    var wrongGuesses = 0; // track number of times user guessed wrong letter
+
     // retrieve list of puzzle words
     $.ajax({
-        url: 'https://cors-anywhere.herokuapp.com/https://api.datamuse.com/words?sp=?????&max=10',
+        url: 'https://cors-anywhere.herokuapp.com/https://api.datamuse.com/words?sp=??????&max=10',
         type: 'GET',
         success: function(json) {
             // populate words array with retrieved words
-            $.each(json, function() {
-                words.push(this.word);
+            $.each(json, function () {
+                words.push(this.word.toUpperCase());
             })
         },
-        complete: playGame 
-    });
+        fail: function (jqXHR, textStatus, errorThrown) {
+            console.log('error', textStatus, errorThrown);
+        },
+    }).done(playGame);
 
     function playGame() {
-        var randomWord = Math.floor(Math.random*10);
-        var puzzleWord = words[randomWord];
-
+        var randomWord = Math.floor(Math.random()*10);
+        console.log('rand', randomWord);
+        puzzleWord = words[randomWord];
+        console.log('puzzle word', puzzleWord);
     }
+
+    $(document).on('keyup', function (e) {
+        var guessedLetter = e.key.toUpperCase();
+
+        // only run when letter is in range of A - Z
+        if (e.keyCode >= 65 && e.keyCode <= 90) { 
+            // did user successfully guess letter
+            if (puzzleWord.indexOf(guessedLetter) !== -1) {
+                displayLetter(guessedLetter);
+            } else {
+                wrongGuesses++;
+            }
+        }
+    });
+
+
 });
