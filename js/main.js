@@ -4,28 +4,7 @@ $(document).ready(function () {
     var wrongGuesses = 0; // track number of times user guessed wrong letter
     var correctGuesses = 0; // track number of correctly guessed letters
 
-    // retrieve list of puzzle words
-    $.ajax({
-        url: 'https://cors-anywhere.herokuapp.com/https://api.datamuse.com/words?sp=??????&max=10',
-        type: 'GET',
-        success: function(json) {
-            // populate words array with retrieved words
-            $.each(json, function () {
-                words.push(this.word.toUpperCase());
-            })
-        },
-        fail: function (jqXHR, textStatus, errorThrown) {
-            console.log('error', textStatus, errorThrown);
-        },
-    }).done(playGame);
-
-    function playGame() {
-        var randomWord = Math.floor(Math.random()*10);
-        console.log('rand', randomWord);
-        puzzleWord = words[randomWord];
-        console.log('puzzle word', puzzleWord);
-    }
-
+    // handle event when user guesses a letter
     $(document).on('keyup', function (e) {
         var guessedLetter = e.key.toUpperCase();
 
@@ -42,6 +21,28 @@ $(document).ready(function () {
             isWinner();
         }
     });
+
+    // retrieve list of puzzle words
+    $.ajax({
+        url: 'https://cors-anywhere.herokuapp.com/https://api.datamuse.com/words?sp=??????&max=10',
+        type: 'GET',
+        success: function(json) {
+            // populate words array with retrieved words
+            $.each(json, function () {
+                words.push(this.word.toUpperCase());
+            })
+        },
+        fail: function (jqXHR, textStatus, errorThrown) {
+            console.log('error', textStatus, errorThrown);
+        },
+    }).done(chooseWord);
+
+    function chooseWord() {
+        var randomWord = Math.floor(Math.random()*10);
+        console.log('rand', randomWord);
+        puzzleWord = words[randomWord];
+        console.log('puzzle word', puzzleWord);
+    }
 
     function displayLetter (guessedLetter) {
         for(var i = 0; i < puzzleWord.length; i++) {
