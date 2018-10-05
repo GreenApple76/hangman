@@ -3,7 +3,7 @@ $(document).ready(function () {
     var puzzleWord; // use to store randomly selected puzzle word 
     var wrongGuesses = 0; // track number of times user guessed wrong letter
     var correctGuesses = 0; // track number of correctly guessed letters
-    
+
     // retrieve list of puzzle words
     $.ajax({
         url: 'https://cors-anywhere.herokuapp.com/https://api.datamuse.com/words?sp=??????&max=10',
@@ -57,6 +57,10 @@ $(document).ready(function () {
             $('.status').text('You Won!');
         } else if (wrongGuesses === 6) { // user ran out of guesses
             $('.status').text('You Lose');
+            // display correct answer to the puzzle
+            for(var i = 0; i < puzzleWord.length; i++) {
+                    $('.letter'+i).text(puzzleWord[i]);
+            }
         }
     }
 });
