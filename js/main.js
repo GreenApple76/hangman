@@ -36,8 +36,26 @@ $(document).ready(function () {
             } else {
                 wrongGuesses++;
             }
+
+            // did user successfully guess the puzzle
+            isWinner();
         }
     });
 
+    function displayLetter (guessedLetter) {
+        for(var i = 0; i < puzzleWord.length; i++) {
+            if (puzzleWord[i] === guessedLetter) {
+                $('.letter'+i).text(guessedLetter);
+                correctGuesses++;
+            }
+        }
+    }
 
+    function isWinner () {
+        if (puzzleWord.length === correctGuesses) {
+            $('.status').text('You Won!');
+        } else if (wrongGuesses === 6) { // user ran out of guesses
+            $('.status').text('You Lose');
+        }
+    }
 });
