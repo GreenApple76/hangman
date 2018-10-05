@@ -10,7 +10,7 @@ html {
 
 body {
     background-color: gold;
-    color: #363636;
+    color: saddlebrown;
     font-size: 16px;
 }
 
@@ -52,13 +52,12 @@ button:hover {
 .letter5 {
     display: inline-block;
     font-family: 'Rye', cursive;
-    /* font-family: Arial, Helvetica, sans-serif; */
     font-size: 3.6rem;
     width: 10%;
     max-width: 20%;
     margin-left: 1.5%;
     margin-right: 1.5%;
-    border-bottom: 0.5rem solid rgb(50, 50, 50);
+    border-bottom: 0.5rem solid #524800;
 }
 
 .no-border {
