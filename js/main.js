@@ -3,7 +3,8 @@ $(document).ready(function () {
     var puzzleWord; // use to store randomly selected puzzle word 
     var wrongGuesses = 0; // track number of times user guessed wrong letter
     var correctGuesses = 0; // track number of correctly guessed letters
-
+    var correctLetters = ''; // store correctly guessed letters
+    
     // handle event when user guesses a letter
     $(document).on('keyup', function (e) {
         var guessedLetter = e.key.toUpperCase();
@@ -53,9 +54,14 @@ $(document).ready(function () {
     function displayLetter (guessedLetter) {
         for(var i = 0; i < puzzleWord.length; i++) {
             if (puzzleWord[i] === guessedLetter) {
+                // do not count as a correct guess if user types the same correctly guessed letter twice
+                if (correctLetters.indexOf(guessedLetter) === -1 || $('.letter'+i).text() === '') {
+                    correctGuesses++;
+                    correctLetters += guessedLetter; // track correctly guessed letters
+                }
                 $('.letter'+i).text(guessedLetter);
                 $('.letter'+i).addClass('no-border'); // remove the '__' below the displayed letter
-                correctGuesses++;
+                
             }
         }
     }
@@ -81,6 +87,7 @@ $(document).ready(function () {
         }
         wrongGuesses = 0;
         correctGuesses = 0;
+        correctLetters = '';
         $('.status').text(' ');
         $('.playagain').hide();
         chooseWord();
