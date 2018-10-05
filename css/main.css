@@ -18,6 +18,18 @@ img {
     max-width: 75%;
 }
 
+button {
+    background-color: sienna;
+    color: #fff;
+    letter-spacing: 0.25rem;
+    margin-top: 2em;
+    padding: 1em;
+}
+
+button:hover {
+    background-color: saddlebrown;
+}
+
 .word {
     max-width: 80%;
     margin: 2rem auto;
@@ -53,4 +65,5 @@ img {
 
 .playagain {
     display: none;
+    text-align: center;
 }
