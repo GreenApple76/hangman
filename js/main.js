@@ -15,6 +15,7 @@ $(document).ready(function () {
                 displayLetter(guessedLetter);
             } else {
                 wrongGuesses++;
+                $('.hangman').attr('src', 'img/hangman'+wrongGuesses+'.png');
             }
 
             // did user successfully guess the puzzle
