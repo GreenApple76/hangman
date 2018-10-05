@@ -49,6 +49,7 @@ $(document).ready(function () {
         for(var i = 0; i < puzzleWord.length; i++) {
             if (puzzleWord[i] === guessedLetter) {
                 $('.letter'+i).text(guessedLetter);
+                $('.letter'+i).addClass('no-border'); // remove the '__' below the displayed letter
                 correctGuesses++;
             }
         }
