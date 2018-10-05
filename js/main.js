@@ -31,7 +31,7 @@ $(document).ready(function () {
 
     // retrieve list of puzzle words
     $.ajax({
-        url: 'https://cors-anywhere.herokuapp.com/https://api.datamuse.com/words?sp=??????&max=10',
+        url: 'https://cors-anywhere.herokuapp.com/https://api.datamuse.com/words?sp=??????&max=100',
         type: 'GET',
         success: function(json) {
             // populate words array with retrieved words
@@ -45,10 +45,8 @@ $(document).ready(function () {
     }).done(chooseWord);
 
     function chooseWord () {
-        var randomWord = Math.floor(Math.random()*10);
-        console.log('rand', randomWord);
+        var randomWord = Math.floor(Math.random()*100);
         puzzleWord = words[randomWord];
-        console.log('puzzle word', puzzleWord);
     }
 
     function displayLetter (guessedLetter) {
