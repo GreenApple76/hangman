@@ -2,7 +2,8 @@ $(document).ready(function () {
     var words = []; // store puzzle words retrieved from ajax request
     var puzzleWord; // use to store randomly selected puzzle word 
     var wrongGuesses = 0; // track number of times user guessed wrong letter
-
+    var correctGuesses = 0; // track number of correctly guessed letters
+    
     // retrieve list of puzzle words
     $.ajax({
         url: 'https://cors-anywhere.herokuapp.com/https://api.datamuse.com/words?sp=??????&max=10',
