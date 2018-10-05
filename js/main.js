@@ -86,6 +86,7 @@ $(document).ready(function () {
         wrongGuesses = 0;
         correctGuesses = 0;
         correctLetters = '';
+        $('.hangman').attr('src', 'img/hangman0.png');
         $('.status').text(' ');
         $('.playagain').hide();
         chooseWord();
