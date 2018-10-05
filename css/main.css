@@ -9,8 +9,16 @@ html {
 }
 
 body {
-    background-color: bisque;
+    background-color: gold;
+    color: #363636;
     font-size: 16px;
+}
+
+h1 {
+    color: saddlebrown;
+    font-family: 'Rye', cursive;
+    font-size: 4.8rem;
+    text-align: center;
 }
 
 img {
@@ -43,7 +51,8 @@ button:hover {
 .letter4,
 .letter5 {
     display: inline-block;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Rye', cursive;
+    /* font-family: Arial, Helvetica, sans-serif; */
     font-size: 3.6rem;
     width: 10%;
     max-width: 20%;
