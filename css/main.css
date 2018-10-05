@@ -50,3 +50,7 @@ img {
     font-weight: bold;
     text-align: center;
 }
+
+.playagain {
+    display: none;
+}

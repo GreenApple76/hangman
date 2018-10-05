@@ -23,6 +23,11 @@ $(document).ready(function () {
         }
     });
 
+    // handle event when user clicks 'Play Again' button
+    $('button').on('click', function () {
+        resetGame();
+    });
+
     // retrieve list of puzzle words
     $.ajax({
         url: 'https://cors-anywhere.herokuapp.com/https://api.datamuse.com/words?sp=??????&max=10',
@@ -38,7 +43,7 @@ $(document).ready(function () {
         },
     }).done(chooseWord);
 
-    function chooseWord() {
+    function chooseWord () {
         var randomWord = Math.floor(Math.random()*10);
         console.log('rand', randomWord);
         puzzleWord = words[randomWord];
@@ -58,12 +63,26 @@ $(document).ready(function () {
     function isWinner () {
         if (puzzleWord.length === correctGuesses) {
             $('.status').text('You Won!');
+            $('.playagain').show();
         } else if (wrongGuesses === 6) { // user ran out of guesses
             $('.status').text('You Lose');
+            $('.playagain').show();
             // display correct answer to the puzzle
             for(var i = 0; i < puzzleWord.length; i++) {
                     $('.letter'+i).text(puzzleWord[i]);
             }
         }
+    }
+
+    function resetGame () {
+        for(var i = 0; i < puzzleWord.length; i++) {
+                $('.letter'+i).text('');
+                $('.letter'+i).removeClass('no-border'); // add the '__' placeholder for letter
+        }
+        wrongGuesses = 0;
+        correctGuesses = 0;
+        $('.status').text(' ');
+        $('.playagain').hide();
+        chooseWord();
     }
 });
