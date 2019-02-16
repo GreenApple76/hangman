@@ -22,8 +22,12 @@ h1 {
 }
 
 img {
-    width: 50%;
-    max-width: 75%;
+    height: 50vh;
+}
+
+input[type="text"] {
+    width: 2.5rem;
+    text-align: center;
 }
 
 button {
@@ -36,6 +40,10 @@ button {
 
 button:hover {
     background-color: saddlebrown;
+}
+
+.guessletter {
+    text-align: center;
 }
 
 .word {
@@ -74,4 +82,10 @@ button:hover {
 .playagain {
     display: none;
     text-align: center;
+}
+
+@media (min-width: 920px) {
+    .guessletter {
+        display: none;
+    }
 }

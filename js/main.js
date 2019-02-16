@@ -4,9 +4,15 @@ $(document).ready(function () {
     var wrongGuesses = 0; // track number of times user guessed wrong letter
     var correctGuesses = 0; // track number of correctly guessed letters
     var correctLetters = ''; // store correctly guessed letters
-    
+   
+    // give focus to textbox for letter guessing
+    $('#guessletter').focus();
+
     // handle event when user guesses a letter
     $(document).on('keyup', function (e) {
+        // clear textbox to accept next letter guess
+        $('#guessletter').val('');
+        
         var guessedLetter = e.key.toUpperCase();
 
         // only run when letter is in range of A - Z
