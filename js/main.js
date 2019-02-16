@@ -96,5 +96,8 @@ $(document).ready(function () {
         $('.status').text(' ');
         $('.playagain').hide();
         chooseWord();
+
+        // give focus to textbox for letter guessing
+        $('#guessletter').focus();
     }
 });
